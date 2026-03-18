@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<style>
+.cards-section h2 {
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card-link {
+    display: flex;
+    align-items: center;
+    background: var(--card);
+    padding: 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: 0.2s;
+}
+
+.card-link:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.card-icon {
+    font-size: 28px;
+    margin-right: 15px;
+    color: var(--primary);
+}
+
+.card-text h3 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    color: #073C59;
+}
+
+.card-text p {
+    margin: 0;
+    font-size: 13px;
+    color: #555;
+}
+</style>
+<div class="cards-section">
+    <h2>Users Management</h2>
+    <div class="cards-grid">
+        <a href="{% url 'register_user' %}" class="card-link">
+            <div class="card-icon">👤</div>
+            <div class="card-text">
+                <h3>Add User</h3>
+                <p>Create a new system user and assign roles</p>
+            </div>
+        </a>
+        
+        <a href="#" class="card-link">
+            <div class="card-icon">📋</div>
+            <div class="card-text">
+                <h3>View Users</h3>
+                <p>See all registered users and their roles</p>
+            </div>
+        </a>
+
+        <a href="#" class="card-link">
+            <div class="card-icon">🔧</div>
+            <div class="card-text">
+                <h3>Manage Roles</h3>
+                <p>Edit user roles or permissions</p>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

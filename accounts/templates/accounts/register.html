@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form-container">
+    <h2>Create User</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label>Username</label>
+                {{ form.username }}
+            </div>
+
+            <div class="form-group">
+                <label>Role</label>
+                {{ form.role }}
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                {{ form.email }}
+            </div>
+
+            <div class="form-group">
+                <label>Sub City</label>
+                {{ form.sub_city }}
+            </div>
+
+            <div class="form-group">
+                <label>Woreda</label>
+                {{ form.woreda }}
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                {{ form.password1 }}
+            </div>
+
+            <div class="form-group">
+                <label>Confirm Password</label>
+                {{ form.password2 }}
+            </div>
+
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">Save User</button>
+        </div>
+
+    </form>
+</div>
+<script>
+document.getElementById("id_sub_city").addEventListener("change", function() {
+    const subCityId = this.value;
+    const woredaSelect = document.getElementById("id_woreda");
+
+    fetch(`/locations/woredas/${subCityId}/`)
+        .then(response => response.json())
+        .then(data => {
+            woredaSelect.innerHTML = '<option value="">Select Woreda</option>';
+
+            data.forEach(w => {
+                const option = document.createElement("option");
+                option.value = w.id;
+                option.text = w.name;
+                woredaSelect.appendChild(option);
+            });
+        });
+});
+</script>
+{% endblock %}

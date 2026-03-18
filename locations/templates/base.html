@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Government Portal</title>
+
+<style>
+:root {
+    --primary: #073C59;
+    --primary-dark: #052c40;
+    --bg: #f4f6f8;
+    --card: #ffffff;
+    --border: #e5e7eb;
+    --text: #333;
+}
+
+/* BASE */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* DASHBOARD WRAPPER */
+.dashboard-wrapper {
+    display: flex;
+    height: calc(100vh - 64px); /* subtract top navbar height */
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 220px;
+    background: var(--primary);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 15px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    transition: 0.2s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: var(--primary-dark);
+}
+
+/* MAIN CONTENT */
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 30px;
+}
+
+/* TOP NAVBAR */
+.navbar {
+    background: var(--primary);
+    color: white;
+    padding: 16px 30px;
+    font-size: 20px;
+    font-weight: 700;
+}
+/* CONTENT WRAPPER */
+.container {
+    padding: 30px;
+}
+
+/* FORM CONTAINER */
+.form-container {
+    background: var(--card);
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    max-width: 1000px;
+}
+
+/* TITLE */
+.form-container h2 {
+    margin-bottom: 20px;
+    color: var(--primary);
+    font-size: 18px;
+}
+
+/* GRID */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+/* GROUP */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* LABEL */
+.form-group label {
+    font-size: 13px;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #555;
+}
+
+/* INPUTS */
+input, select {
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #f9fafb;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+/* INPUT FOCUS */
+input:focus, select:focus {
+    border-color: var(--primary);
+    background: #fff;
+    box-shadow: 0 0 0 2px rgba(7, 60, 89, 0.1);
+    outline: none;
+}
+
+/* BUTTON AREA */
+.form-actions {
+    margin-top: 25px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* PRIMARY BUTTON */
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+/* REMOVE OLD FULL WIDTH BUTTON */
+.btn {
+    display: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-container {
+        width: 100%;
+    }
+}
+</style>
+
+</head>
+<body>
+
+    <!-- TOP NAVBAR: Brand Only -->
+    <div class="navbar">
+        <div class="brand">CRRSA</div>
+    </div>
+
+    <div class="dashboard-wrapper">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar">
+            <a href="#">Dashboard</a>
+            <a href="{% url 'users_cards' %}" class="{% if request.path == '/accounts/cards/' %}active{% endif %}">Users</a>
+            <a href="#">Reports</a>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <div class="container">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </main>
+
+    </div>
+
+</body>
+</html>
