@@ -1,63 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Government Portal</title>
+<meta charset="UTF-8">
+<title>Login</title>
+{% load static %}
+<style>
+:root {
+    --primary: #073C59;
+    --bg: #f4f6f8;
+}
 
-    <style>
-        body {
-            margin: 0;
-            font-family: "Segoe UI", Arial, sans-serif;
-            background: #f4f6f8;
-        }
+/* PAGE */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--bg);
+}
 
-        .auth-wrapper {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+/* WRAPPER */
+.auth-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .auth-card {
-            background: white;
-            padding: 30px;
-            width: 100%;
-            max-width: 400px;
-            border-radius: 8px;
-            border: 1px solid #e5e7eb;
-        }
+/* CARD */
+.auth-card {
+    width: 1100px;
+    height: 400px;
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
 
-        .auth-card h2 {
-            margin-bottom: 20px;
-            color: #073C59;
-            text-align: center;
-        }
+/* LEFT SIDE */
+.auth-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-        }
+.auth-left img {
+    width: 220px;
+}
 
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #073C59;
-            color: white;
-            border: none;
-            border-radius: 6px;
-        }
-    </style>
+/* RIGHT SIDE */
+.auth-right {
+    flex: 1;
+    padding: 40px;
+}
+
+/* TITLE */
+.auth-right h2 {
+    margin-bottom: 25px;
+    color: var(--primary);
+}
+
+/* INPUT GROUP */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    font-size: 13px;
+    display: block;
+    margin-bottom: 6px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* FOOTER */
+.form-footer {
+    margin-top: 15px;
+    font-size: 13px;
+    text-align: center;
+}
+</style>
 
 </head>
 <body>
 
 <div class="auth-wrapper">
     <div class="auth-card">
-        {% block content %}
-        {% endblock %}
+
+        <!-- LEFT -->
+        <div class="auth-left">
+            <img src="{% static 'images/logo.jpg' %}" alt="Logo">
+        </div>
+
+        <!-- RIGHT -->
+        <div class="auth-right">
+            {% block content %}
+            {% endblock %}
+        </div>
+
     </div>
 </div>
 

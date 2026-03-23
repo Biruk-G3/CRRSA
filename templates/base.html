@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Government Portal</title>
+<meta charset="UTF-8">
+<title>Government Portal</title>
 
 <style>
 :root {
@@ -22,27 +22,117 @@ body {
     color: var(--text);
 }
 
-/* DASHBOARD WRAPPER */
+/* TOP NAVBAR */
+.navbar {
+    height: 64px;
+    background: var(--primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+}
+
+/* BRAND */
+.brand {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* NAV RIGHT */
+.nav-right {
+    margin-left: auto;
+}
+
+/* USER MENU */
+.user-menu {
+    position: relative;
+}
+
+.user-name {
+    background: white;
+    color: var(--primary);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+/* DROPDOWN */
+.dropdown {
+    position: absolute;
+    right: 0;
+    top: 38px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    width: 160px;
+    display: none;
+    padding: 10px;
+    display: none;
+}
+
+.dropdown p {
+    margin: 0 0 10px 0;
+    font-size: 12px;
+    color: #555;
+}
+
+.dropdown p:first-child {
+    font-weight: 600;
+    color: #073C59;
+}
+
+.dropdown p:last-child {
+    font-size: 12px;
+    color: #777;
+}
+
+
+.dropdown button {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    background: var(--primary);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.dropdown.show {
+    display: block;
+}
+
+.dropdown button:hover {
+    background: var(--primary-dark);
+}
+
+.user-menu:hover .dropdown {
+    display: block;
+}
+
+/* LAYOUT */
 .dashboard-wrapper {
     display: flex;
-    height: calc(100vh - 64px); /* subtract top navbar height */
+    height: calc(100vh - 64px);
 }
 
 /* SIDEBAR */
 .sidebar {
     width: 220px;
     background: var(--primary);
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    padding: 20px;
 }
 
+/* SIDEBAR LINKS */
 .sidebar a {
     color: white;
     text-decoration: none;
-    padding: 12px 15px;
+    padding: 12px 14px;
     border-radius: 6px;
     margin-bottom: 8px;
+    font-size: 14px;
     transition: 0.2s;
 }
 
@@ -55,126 +145,59 @@ body {
 .main-content {
     flex: 1;
     overflow-y: auto;
-    padding: 20px 30px;
-}
-
-/* TOP NAVBAR */
-.navbar {
-    background: var(--primary);
-    color: white;
-    padding: 16px 30px;
-    font-size: 20px;
-    font-weight: 700;
-}
-/* CONTENT WRAPPER */
-.container {
-    padding: 30px;
-}
-
-/* FORM CONTAINER */
-.form-container {
-    background: var(--card);
     padding: 25px;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1200px;
+}
+
+/* CARD GRID */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* CARD */
+.card {
+    background: white;
+    padding: 20px;
     border-radius: 8px;
     border: 1px solid var(--border);
-    max-width: 1000px;
 }
 
-/* TITLE */
-.form-container h2 {
-    margin-bottom: 20px;
+.card h3 {
+    margin: 0 0 8px 0;
     color: var(--primary);
-    font-size: 18px;
 }
 
-/* GRID */
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-}
-
-/* GROUP */
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-/* LABEL */
-.form-group label {
-    font-size: 13px;
-    margin-bottom: 6px;
-    font-weight: 600;
+.card p {
+    margin: 0;
+    font-size: 14px;
     color: #555;
 }
-
-/* INPUTS */
-input, select {
-    padding: 10px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    background: #f9fafb;
-    font-size: 14px;
-    transition: 0.2s;
-}
-
-/* INPUT FOCUS */
-input:focus, select:focus {
-    border-color: var(--primary);
-    background: #fff;
-    box-shadow: 0 0 0 2px rgba(7, 60, 89, 0.1);
-    outline: none;
-}
-
-/* BUTTON AREA */
-.form-actions {
-    margin-top: 25px;
-    display: flex;
-    justify-content: flex-end;
-}
-
-/* PRIMARY BUTTON */
-.btn-primary {
-    background: var(--primary);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.btn-primary:hover {
-    background: var(--primary-dark);
-}
-
-/* REMOVE OLD FULL WIDTH BUTTON */
-.btn {
-    display: none;
-}
-.logout-btn {
+.avatar {
+    width: 36px;
+    height: 36px;
     background: white;
     color: #073C59;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 6px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 14px;
 }
 
-.logout-btn:hover {
-    background: #e5e7eb;
-}
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .form-container {
-        width: 100%;
+    .sidebar {
+        display: none;
     }
 }
 </style>
@@ -182,33 +205,83 @@ input:focus, select:focus {
 </head>
 <body>
 
-    <!-- TOP NAVBAR: Brand Only -->
-    <div class="navbar">
-        <div class="brand">CRRSA</div>
-            <form action="{% url 'logout' %}" method="post" style="margin-left:auto;">
-        {% csrf_token %}
-        <button type="submit" class="logout-btn">Logout</button>
-    </form>
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="brand">CRRSA</div>
+
+    <div class="nav-right">
+<div class="user-menu">
+    <div class="avatar" onclick="toggleDropdown()">
+        {{ request.user.username|first|upper }}
     </div>
 
-    <div class="dashboard-wrapper">
+    <div class="dropdown" id="dropdownMenu">
+        <p>{{ request.user.username }}</p>
+        <p>{{ request.user.role }}</p>
 
-        <!-- LEFT SIDEBAR -->
-        <aside class="sidebar">
-            <a href="#">Dashboard</a>
-            <a href="{% url 'users_cards' %}" class="{% if request.path == '/accounts/cards/' %}active{% endif %}">Users</a>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+</div>
+
+
+    </div>
+</div>
+
+<!-- BODY -->
+<div class="dashboard-wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <a href="{% url 'dashboard' %}">Dashboard</a>
+
+        {% if request.user.role == 'AGENCY_ADMIN' %}
+            <a href="{% url 'users_cards' %}">Users</a>
             <a href="#">Reports</a>
-        </aside>
+        {% endif %}
 
-        <!-- MAIN CONTENT -->
-        <main class="main-content">
-            <div class="container">
-                {% block content %}
-                {% endblock %}
-            </div>
-        </main>
+        {% if request.user.role == 'SUBCITY_ADMIN' %}
+            <a href="#">Woreda Management</a>
+        {% endif %}
 
-    </div>
+        {% if request.user.role == 'WOREDA_ADMIN' %}
+            <a href="#">Staff</a>
+        {% endif %}
+
+        {% if request.user.role == 'STAFF' %}
+            <a href="#">Daily Reports</a>
+        {% endif %}
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main-content">
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+</div>
+<script>
+function toggleDropdown() {
+    const menu = document.getElementById("dropdownMenu");
+    menu.classList.toggle("show");
+}
+
+// close when clicking outside
+window.onclick = function(e) {
+    if (!e.target.matches('.user-name')) {
+        let dropdown = document.getElementById("dropdownMenu");
+        if (dropdown.classList.contains('show')) {
+            dropdown.classList.remove('show');
+        }
+    }
+}
+</script>
 
 </body>
 </html>
