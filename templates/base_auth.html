@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Government Portal</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f4f6f8;
+        }
+
+        .auth-wrapper {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .auth-card {
+            background: white;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .auth-card h2 {
+            margin-bottom: 20px;
+            color: #073C59;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #073C59;
+            color: white;
+            border: none;
+            border-radius: 6px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="auth-wrapper">
+    <div class="auth-card">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+
+</body>
+</html>

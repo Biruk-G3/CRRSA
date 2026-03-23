@@ -3,8 +3,14 @@ from .forms import UserRegisterForm
 from locations.models import Agency
 from django.http import JsonResponse
 from locations.models import Woreda
+from django.contrib.auth.views import LoginView
+from django.urls import reverse
 
+class CustomLoginView(LoginView):
+    template_name = 'accounts/login.html'
 
+    def get_success_url(self):
+        return reverse('dashboard')
 
 
 def register_user(request):

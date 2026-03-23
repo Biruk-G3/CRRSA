@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card-link {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.card-text h3 {
+    margin: 0 0 8px 0;
+    color: #073C59;
+}
+
+.card-text p {
+    margin: 0;
+    color: #555;
+    font-size: 14px;
+}
+</style>
+
+
+<h2>Dashboard</h2>
+
+<div class="cards-grid">
+
+    {% if user.role == 'AGENCY_ADMIN' %}
+        <div class="card-link">
+            <div class="card-text">
+                <h3>Agency Overview</h3>
+                <p>Manage sub cities and system data</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if user.role == 'SUBCITY_ADMIN' %}
+        <div class="card-link">
+            <div class="card-text">
+                <h3>Sub City Management</h3>
+                <p>Manage woredas and reports</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if user.role == 'WOREDA_ADMIN' %}
+        <div class="card-link">
+            <div class="card-text">
+                <h3>Woreda Operations</h3>
+                <p>Manage staff and requests</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if user.role == 'WOREDA_STAFF' %}
+        <div class="card-link">
+            <div class="card-text">
+                <h3>Daily Services</h3>
+                <p>Submit daily reports</p>
+            </div>
+        </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -153,6 +153,19 @@ input:focus, select:focus {
 .btn {
     display: none;
 }
+.logout-btn {
+    background: white;
+    color: #073C59;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.logout-btn:hover {
+    background: #e5e7eb;
+}
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
@@ -172,6 +185,10 @@ input:focus, select:focus {
     <!-- TOP NAVBAR: Brand Only -->
     <div class="navbar">
         <div class="brand">CRRSA</div>
+            <form action="{% url 'logout' %}" method="post" style="margin-left:auto;">
+        {% csrf_token %}
+        <button type="submit" class="logout-btn">Logout</button>
+    </form>
     </div>
 
     <div class="dashboard-wrapper">
